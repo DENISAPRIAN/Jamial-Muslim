@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Kami -Jamial Muslim</title>
+   <!-- Logo website -->
+  <link rel="icon" type="image/png" href="foto/logo.png">
+  <link rel="apple-touch-icon" href="foto/logo.png">
+  
+  <!-- Font Cairo & Amiri -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Jamial Muslim",
+    "url": "https://jamial-muslim-dbbd6.web.app"
+  }
+</script>
+<style>
+/* ========================================
+   CSS MASTER & DESAIN SERAGAM
+   ======================================== */
+* { 
+  box-sizing: border-box; 
+  margin: 0;
+  padding: 0;
+}
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #10b981, #fdfcfc);
+    border-radius: 10px;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* BASE BODY WITH GREEN BACKGROUND & PATTERN */
+body {
+  color: #FFFFFF;
+  
+  /* Lapis 1 (Atas): Warna hijau pekat (tidak transparan) */
+  /* Lapis 2 (Bawah): Gambar motif Unknown.jpeg */
+  background:
+    linear-gradient(#059669, #059669),
+    url("foto/Unknown.jpeg");
+  
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  /* 'blend-mode: multiply' memaksa gambar menyatu penuh di dalam warna hijau pekat */
+  background-blend-mode: multiply;
+  
+  padding: 10px;
+  padding-bottom: 80px;
+  min-height: 100vh;
+}
+
+/* KOSONGKAN/HAPUS body::before agar tidak bikin bentrok layer lagi */
+body::before {
+  display: none !important;
+}
+
+body>* {
+  position: relative;
+  z-index: 1;
+}
+
+body > * {
+  position: relative;
+  z-index: 1; /* Konten berada paling atas */
+}
+
+
+/* CONTAINER UTAMA */
+.main-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* HEADER BANNER */
+header {
+  text-align: center;
+  padding: 40px 20px; /* Diperbaiki dari typo 4bo0px */
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 25px auto;
+  border-radius: 25px; 
+  overflow: hidden;
+  box-shadow: 0 10px 30px #059669(0, 0, 0, 1);
+  background: linear-gradient(135deg, #10B981, #059669);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bismillah {
+  color: #FFFFFF !important;
+  font-family: 'Amiri', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 10px;
+}
+
+.header-title {
+  font-size: 2rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.header-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+/* LOGO & TAGLINE */
+.logo-tengah {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-tengah img {
+  width: 220px;
+  height: auto;
+}
+
+.tagline {
+  font-size: 15px;
+  color: #FFFFFF;
+  font-style: italic;
+  font-weight: 400;
+  display: block;
+  margin-top: 4px;
+  text-shadow: 1px 1px 2px #000000;
+}
+
+/* CONTAINER KONTEN (GLASSMORPHISM) */
+.about-card {
+  width: 100%;
+  max-width: 800px; 
+  margin: 20px auto 25px auto;
+  border-radius: 25px;
+  /* Transparansi diturunkan sedikit agar motif latar belakang di belakang kartu tetap berbayang */
+ background: linear-gradient(rgba(235, 235, 235, 0.74), rgba(255, 255, 255, 0.5)),
+rgba(255, 255, 255, 0) url("foto/Loo.jpeg") center / cover no-repeat;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #059669;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 2px solid rgba(16, 185, 129, 0.2);
+  padding-bottom: 8px;
+}
+
+.about-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+/* GRID VISI & MISI */
+.visi-misi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.info-box {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.info-box:hover {
+  transform: translateY(-3px);
+  border-color: #10b981;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15);
+}
+
+.info-box h3 {
+  color: #059669;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-box ul {
+  padding-left: 20px;
+  color: #334155;
+  line-height: 1.6;
+}
+
+.info-box li {
+  margin-bottom: 4px;
+}
+
+/* FOOTER CREDIT */
+.footer-credit {
+  text-align: center;
+  margin-top: 30px;
+  font-style: italic;
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* ========================================
+   BOTTOM NAVIGATION BAR
+   ======================================== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  padding: 10px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.bottom-nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 1);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.bottom-nav-btn img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  margin-bottom: 4px;
+}
+
+.bottom-nav-btn span {
+  text-align: center;
+  line-height: 1.2;
+}
+
+.bottom-nav-btn:hover,
+.bottom-nav-btn.active {
+  color: #000000;
+  transform: translateY(-3px);
+}
+
+/* MEDIA QUERIES (RESPONSIVE HP) */
+@media (max-width: 600px) {
+  header {
+    padding: 30px 15px;
+    border-radius: 20px;
+  }
+  .bismillah { font-size: 1.5rem !important; }
+  .header-title { font-size: 1.5rem; }
+  
+  .about-card {
+    border-radius: 20px;
+    padding: 20px 15px;
+  }
+
+  .bottom-nav {
+    justify-content: space-around; 
+    gap: 0;
+    padding: 9px 4px;
+  }
+
+  .bottom-nav-btn {
+    font-size: 10px;
+    min-width: 65px;
+    max-width: 105px;
+  }
+
+  .bottom-nav-btn img {
+    width: 22px;
+    height: 22px;
+  }
+}
+</style>
+</head>
+<body>
+
+  <div class="main-content">
+    
+    <!-- HEADER -->
+    <header>
+      <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+      <h1 class="header-title">Tentang Kami</h1>
+      <p class="header-subtitle">Memanfaaatkan Teknologi untuk Mempermudah Ibadah</p>
+    </header>
+  <div class="logo-tengah">
+  <img src="foto/Log.png" alt="Jamial Muslim">
+</div>
+<center>
+  <i class="tagline">Ibadah jadi lebih mudah</i>
+  <div>
+  <i class="tagline">Dekat di setiap waktu Dekat dalam ibadah</i></div>
+</center>
+  
+  <div>
+    <!-- SECTION KONTEN TENTANG KAMI -->
+    <div class="about-card">
+      <h2 class="section-title"><span>📖</span>Pendahuluan</h2>
+      <p class="about-text">
+        Aplikasi ini dibuat sebagai ruang pengingat dan sarana belajar yang sederhana bagi kita semua. Kami ingin menghadirkan akses informasi islami yang ringkas, jelas, dan nyaman digunakan dalam kehidupan sehari-hari, agar kita bisa terus menjaga ritme ibadah di tengah kesibukan harian.
+      </p>
+
+      <!-- VISI & MISI -->
+      <div class="visi-misi-grid">
+        <div class="info-box">
+          <h3><span>🎯</span> Niat & Harapan</h3>
+          <p class="about-text" style="margin-bottom:0;">
+            Menjadi teman perjalanan digital yang konsisten membantu sesama Muslim untuk saling mengingatkan dalam kebaikan dan memperdalam pemahaman agama secara mudah.
+          </p>
+        </div>
+
+        <div class="info-box">
+          <h3><span>🚀</span> Langkah Kami</h3>
+          <ul>
+            <li>Menyajikan pengingat ibadah dan materi pendukung yang akurat.</li>
+            <li>Menjaga tampilan aplikasi tetap bersih, ringan, dan mudah dipakai siapa saja.</li>
+            <li>Terus memperbarui fitur agar makin bermanfaat untuk kebutuhan harian.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+
+    <!-- FOOTER CREDIT -->
+    <div class="footer-credit">
+      &copy; 2026 Portal Muslim Digital. Dibuat dengan niat kebaikan.
+    </div>
+
+  </div>
+</div>
+</div>
+<nav class="bottom-nav">
+  <!-- HOME -->
+  <a href="index.html" class="bottom-nav-btn active" title="Home">
+    <img src="foto/home-icon-silhouette.png" alt="Home">
+    <span>Home</span>
+  </a>
+  <!-- URUTAN PERJALANAN AKHIRAT -->
+  <a href="pengaturan.html" class="bottom-nav-btn" title="Urutan Perjalanan Akhirat">
+    <img src="foto/map.png" alt="Urutan Perjalanan Akhirat">
+    <span>Urutan Perjalanan Akhirat</span>
+  </a>
+  <!-- TENTANG -->
+  <a href="about.html" class="bottom-nav-btn" title="Tentang">
+    <img src="foto/information-button.png" alt="Tentang">
+    <span>Tentang</span>
+  </a>
+</nav>
+<!-- JAVASCRIPT -->
+<script src="script.js"></script>
+<script src="voice-assistant.js"></script>
+</body>
+</html>

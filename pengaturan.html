@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peta Perjalanan Manusia & Perenungan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <!-- Logo website -->
+  <link rel="icon" type="image/png" href="foto/logo.png">
+  <link rel="apple-touch-icon" href="foto/logo.png">
+ 
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Jamial Muslim",
+    "url": "https://jamial-muslim-dbbd6.web.app"
+  }
+</script>
+<style>
+:root {
+  --bg-gradient: linear-gradient(135deg, #AEAEAE, #838383);
+  --primary: #FFF5F5;
+  --primary-dark: #FFFFFF;
+  --primary-light: rgba(16, 185, 129, 0.2);
+  --text: #FFFFFF;
+  --muted: #FFFFFF;
+  --card-bg: rgba(39, 85, 56, 1);
+  --card-border: rgba(16, 185, 129, 0.97);
+  --danger: #ef4444;
+}
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #10b981, #fdfcfc);
+    border-radius: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  color: #FFFFFF;
+  /* Warna latar belakang dasar paling bawah */
+  background-color: #059669;
+  padding: 10px;
+  padding-bottom: 80px;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("foto/Unknown.jpeg");
+  background-position: center;
+  /* Gunakan cover agar motif penuh tanpa terdistorsi/gepeng */
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+  /* Naikkan opacity agar motif jelas & mendominasi */
+  opacity: 0.6;
+  
+  /* Membaurkan gambar dengan warna hijau di belakangnya */
+  mix-blend-mode: multiply;
+  
+  pointer-events: none;
+  z-index: 1;
+}
+
+body > * {
+  position: relative;
+  z-index: 2;
+}
+
+section { padding: 60px 20px; }
+.wrap { max-width: 900px; margin: auto; }
+
+.section-title { text-align: center; margin-bottom: 50px; }
+.section-title h2 {
+  font-family: 'Amiri', serif;
+  font-size: 2.8rem;
+  color: var(--primary-dark);
+}
+.section-title p {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* STYLE UNTUK EMBED PNG CUSTOM SEUKURAN EMOJI */
+.img-emoji {
+  height: 1.2em;
+  width: 1.2em;
+  vertical-align: -0.2em;
+  object-fit: contain;
+}
+
+.node-icon .img-emoji {
+  height: 2rem;
+  width: 2rem;
+  vertical-align: middle;
+}
+
+.advice-card .icon .img-emoji {
+  height: 2.2rem;
+  width: 2.2rem;
+  vertical-align: middle;
+}
+
+/* CONTAINER MAP TIMELINE */
+.map-container {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* SVG GARIS PENGHUBUNG KONEKTOR */
+.connector-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.connector-svg path {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 4;
+  stroke-dasharray: 6, 6;
+  opacity: 0.7;
+}
+
+/* STEP NODE */
+.map-step {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  margin-bottom: 40px;
+}
+.map-step.left { justify-content: flex-start; }
+.map-step.right { justify-content: flex-end; }
+.map-step.center { justify-content: center; }
+
+/* CABANG SURGA & NERAKA */
+.split-step {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+/* BULATAN CARD */
+.node-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+ background:linear-gradient(rgba(39, 85, 56, 1), rgba(52, 211, 153, .75)), rgba(255, 255, 255, 0) url(foto/Loo.jpeg) center / cover no-repeat;
+  border: 3px solid var(--primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+  box-shadow: 0 8px 20px rgba(5, 150, 105, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.node-circle:hover {
+  transform: scale(1.08);
+ background: linear-gradient(rgba(15, 121, 46, 0.56), rgba(9, 134, 50, 0.5)),
+rgba(255, 255, 255, 0) url("Loo.jpeg") center / cover no-repeat;
+}
+
+.node-icon { font-size: 1.5rem; margin-bottom: 4px; }
+.node-circle h3 { font-size: 0.85rem; color: var(--primary-dark); font-weight: 700; margin: 2px 0; }
+.node-circle p { font-size: 0.62rem; color: var(--muted); line-height: 1.2; }
+.node-tag {
+  margin-top: 4px;
+  font-size: 0.55rem;
+  padding: 2px 6px;
+  border-radius: 10px;
+ background: linear-gradient(rgba(15, 121, 46, 0.56), rgba(9, 134, 50, 0.5)),
+rgba(255, 255, 255, 0) url("Loo.jpeg") center / cover no-repeat;
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+/* SURGA & NERAKA STYLING */
+.node-circle.neraka {
+  border-color: var(--danger);
+ background: linear-gradient(rgba(39, 85, 56, 1), rgba(52, 211, 153, .75)), rgba(255, 255, 255, 0) url(foto/Loo.jpeg) center / cover no-repeat;
+}
+.node-circle.neraka h3 { color: var(--danger); }
+.node-circle.neraka .node-tag {background: linear-gradient(rgba(15, 121, 46, 0.56), rgba(9, 134, 50, 0.5)),
+rgba(255, 255, 255, 0) url("Loo.jpeg") center / cover no-repeat; color: var(--danger); }
+
+.node-circle.surga {
+  border-color: var(--primary);
+ background: linear-gradient(rgba(39, 85, 56, 1), rgba(52, 211, 153, .75)), rgba(255, 255, 255, 0) url(foto/Loo.jpeg) center / cover no-repeat;
+}
+
+/* SECTION NASIHAT */
+.advice-section {
+  background: #05966900;
+  border-top: 2px solid var(--card-border);
+  border-color: #10B981;
+  margin-top: 60px;
+}
+
+.advice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.advice-card {
+  background: rgba(39, 85, 56, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease;
+  border: 2px solid #10B981;
+}
+
+.advice-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+}
+
+.advice-card .icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.advice-card h3 {
+  color: var(--primary-dark);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.advice-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.main-quote {
+  text-align: center;
+  background: rgba(39, 85, 56, 0.11);
+  border-left: 5px solid var(--primary);
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 40px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+}
+
+.main-quote p {
+  font-family: 'Amiri', serif;
+  font-size: 1.4rem;
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+.main-quote span {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+@media(max-width: 600px) {
+  .node-circle { width: 130px; height: 130px; padding: 8px; }
+  .node-circle h3 { font-size: 0.75rem; }
+  .node-circle p { display: none; }
+}
+
+/* ========================================
+   BOTTOM NAVIGATION BAR
+   ======================================== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  padding: 10px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.bottom-nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 1);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.bottom-nav-btn img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  margin-bottom: 4px;
+}
+
+.bottom-nav-btn span {
+  text-align: center;
+  line-height: 1.2;
+}
+
+.bottom-nav-btn:hover,
+.bottom-nav-btn.active {
+  color: #000000;
+  transform: translateY(-3px);
+}
+
+.footer-credit {
+  text-align: center;
+  margin-top: 30px;
+  font-style: italic;
+  color: #64748b;
+}
+
+/* MEDIA QUERIES (RESPONSIVE HP) */
+@media (max-width: 600px) {
+  .bottom-nav {
+    justify-content: space-around; 
+    gap: 0;
+    padding: 9px 4px;
+  }
+
+  .bottom-nav-btn {
+    font-size: 10px;
+    min-width: 65px;
+    max-width: 105px;
+  }
+
+  .bottom-nav-btn img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.logo-tengah {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-tengah img {
+  width: 220px;
+  height: auto;
+}
+</style>
+</head>
+<body>
+  <div class="logo-tengah">
+    <img src="foto/Log.png" alt="Jamial Muslim">
+  </div>
+
+<!-- SECTION PETA PERJALANAN -->
+<section>
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Peta Perjalanan Akhirat</h2>
+      <p>Menelusuri setiap fase yang akan kita lalui, langkah demi langkah.</p>
+    </div>
+
+    <div class="map-container">
+      
+      <!-- GARIS SVG DARI BULATAN KE BULATAN -->
+      <svg class="connector-svg" viewBox="0 0 700 2400" preserveAspectRatio="none">
+        <!-- 1 ke 2 -->
+        <path d="M 80,80 L 620,280" />
+        <!-- 2 ke 3 -->
+        <path d="M 620,280 L 80,480" />
+        <!-- 3 ke 4 -->
+        <path d="M 80,480 L 620,680" />
+        <!-- 4 ke 5 -->
+        <path d="M 620,680 L 80,880" />
+        <!-- 5 ke 6 -->
+        <path d="M 80,880 L 620,1080" />
+        <!-- 6 ke 7 -->
+        <path d="M 620,1080 L 80,1280" />
+        <!-- 7 ke 8 -->
+        <path d="M 80,1280 L 620,1480" />
+        <!-- 8 ke 9 -->
+        <path d="M 620,1480 L 80,1680" />
+        <!-- 9 ke 10 (Shirath) -->
+        <path d="M 80,1680 L 350,1880" />
+        
+        <!-- Shirath bercabang ke Neraka dan Surga -->
+        <path d="M 350,1880 L 80,2080" /> <!-- ke Neraka (Buntu) -->
+        <path d="M 350,1880 L 620,2080" /> <!-- ke Surga -->
+
+        <!-- Hanya Surga yang terhubung ke Akhirat -->
+        <path d="M 620,2080 L 350,2280" />
+      </svg>
+
+      <!-- 1. DUNIA (KIRI) -->
+      <div class="map-step left">
+        <div class="node-circle">
+          <div class="node-icon"><img src="foto/emot_dunia.png" alt="Dunia" class="img-emoji"></div>
+          <h3>1. Dunia</h3>
+          <p>Tempat kita menanam dan mengumpulkan bekal.</p>
+          <span class="node-tag">Kita Disini</span>
+        </div>
+      </div>
+
+      <!-- 2. KEMATIAN (KANAN) -->
+      <div class="map-step right">
+        <div class="node-circle">
+          <div class="node-icon"><img src="foto/emot_kematian.png" alt="Kematian" class="img-emoji"></div>
+          <h3>2. Kematian</h3>
+          <p>Pintu pemisah antara dunia dan akhirat.</p>
+          <span class="node-tag">Pasti Tiba</span>
+        </div>
+      </div>
+
+      <!-- 3. BARZAKH (KIRI) -->
+      <div class="map-step left">
+        <div class="node-circle">
+          <div class="node-icon"><img src="foto/emot_barzakh.png" alt="Alam Barzakh" class="img-emoji"></div>
+          <h3>3. Alam Barzakh</h3>
+          <p>Masa penantian di kubur hingga hari kebangkitan.</p>
+          <span class="node-tag">Alam Antara</span>
+        </div>
+      </div>
+
+      <!-- 4. KIAMAT (KANAN) -->
+      <div class="map-step right">
+        <div class="node-circle">
+          <div class="node-icon"><img src="foto/emot_kiamat.png" alt="Hari Kiamat" class="img-emoji"></div>
+          <h3>4. Hari Kiamat</h3>
+          <p>Tiupan sangkakala dan hancurnya alam semesta.</p>
+          <span class="node-tag">Kehancuran</span>
+        </div>
+      </div>
+
+      <!-- 5. KEBANGKITAN (KIRI) -->
+      <div class="map-step left">
+        <div class="node-circle">
+          <div class="node-icon"><img src="foto/emot_kebangkitan.png" alt="Kebangkitan" class="img-emoji"></div>
+          <h3>5. Kebangkitan</h3>
+          <p>Manusia dibangunkan kembali dari alam kubur.</p>
+          <span class="node-tag">Yaumul Ba'ats</span>
+        </div>
+      </div>
+
+      <!-- 6. MAHSYAR (KANAN) -->
+      <div class="map-step right">
+        <div class="node-circle">
+          <div class="node-icon"><img src="foto/emot_mahsyar.png" alt="Padang Mahsyar" class="img-emoji"></div>
+          <h3>6. Padang Mahsyar</h3>
+          <p>Tempat berkumpulnya seluruh umat manusia.</p>
+          <span class="node-tag">Perhimpunan</span>
+        </div>
+      </div>
+
+      <!-- 7. HISAB (KIRI) -->
+      <div class="map-step left">
+        <div class="node-circle">
+          <div class="node-icon"><img src="foto/emot_hisab.png" alt="Hisab" class="img-emoji"></div>
+          <h3>7. Hisab</h3>
+          <p>Momen perhitungan dan audit seluruh perbuatan.</p>
+          <span class="node-tag">Perhitungan</span>
+        </div>
+      </div>
+
+      <!-- 8. MIZAN (KANAN) -->
+      <div class="map-step right">
+        <div class="node-circle">
+          <div class="node-icon"><img src="foto/emot_mizan.png" alt="Mizan" class="img-emoji"></div>
+          <h3>8. Mizan</h3>
+          <p>Penimbangan amal baik dan buruk secara adil.</p>
+          <span class="node-tag">Penimbangan</span>
+        </div>
+      </div>
+
+      <!-- 9. CATATAN AMAL (KIRI) -->
+      <div class="map-step left">
+        <div class="node-circle">
+          <div class="node-icon"><img src="foto/emot_catatan.png" alt="Catatan Amal" class="img-emoji"></div>
+          <h3>9. Catatan Amal</h3>
+          <p>Penyerahan lembaran rekam jejak hidup kita.</p>
+          <span class="node-tag">Kitab Amal</span>
+        </div>
+      </div>
+
+      <!-- 10. SHIRATH (TENGAH) -->
+      <div class="map-step center">
+        <div class="node-circle">
+          <div class="node-icon"><img src="foto/emot_shirath.png" alt="Shirath" class="img-emoji"></div>
+          <h3>10. Shirath</h3>
+          <p>Jembatan penentu yang membentang di atas neraka.</p>
+          <span class="node-tag">Penyeberangan</span>
+        </div>
+      </div>
+
+      <!-- 11. NERAKA (KIRI) & SURGA (KANAN) -->
+      <div class="split-step">
+        <div class="node-circle neraka">
+          <div class="node-icon"><img src="foto/emot_neraka.png" alt="Neraka" class="img-emoji"></div>
+          <h3>11. Neraka</h3>
+          <p>Tempat balasan atas dosa dan kezaliman.</p>
+          <span class="node-tag">Peringatan</span>
+        </div>
+
+        <div class="node-circle surga">
+          <div class="node-icon"><img src="foto/emot_surga.png" alt="Surga" class="img-emoji"></div>
+          <h3>11. Surga</h3>
+          <p>Muara kebahagiaan bagi mereka yang beriman.</p>
+          <span class="node-tag">Tujuan Akhir</span>
+        </div>
+      </div>
+
+      <!-- 12. KEHIDUPAN AKHIRAT (TENGAH AKHIR) -->
+      <div class="map-step center">
+        <div class="node-circle">
+          <div class="node-icon"><img src="foto/emot_abadi.png" alt="Kehidupan Abadi" class="img-emoji"></div>
+          <h3>12. Kehidupan Abadi</h3>
+          <p>Fase akhir kehidupan yang kekal tanpa batas.</p>
+          <span class="node-tag">Kekal Abadi</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION NASIHAT & PERENUNGAN -->
+<section class="advice-section">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>Nasihat & Perenungan</h2>
+      <p>Dunia adalah tempat kita bertanam, sedangkan akhirat adalah saatnya memanen hasil.</p>
+    </div>
+
+    <div class="advice-grid">
+      <div class="advice-card">
+        <div class="icon"><img src="foto/emot_waktu.png" alt="Waktu" class="img-emoji"></div>
+        <h3>Waktu Adalah Modal Utama</h3>
+        <p>Setiap detik yang lewat tak pernah bisa diputar balik. Manfaatkan waktu luangmu sebaik mungkin sebelum masa sempit itu tiba.</p>
+      </div>
+
+      <div class="advice-card">
+        <div class="icon"><img src="foto/emot_amal.png" alt="Amal" class="img-emoji"></div>
+        <h3>Tabung Amal Jariyah</h3>
+        <p>Siapkan bekal yang pahalanya terus mengalir meski kita sudah di alam kubur: ilmu bermanfaat, sedekah jariyah, dan doa anak saleh.</p>
+      </div>
+
+      <div class="advice-card">
+        <div class="icon"><img src="foto/emot_taubat.png" alt="Taubat" class="img-emoji"></div>
+        <h3>Jangan Tunda Taubat</h3>
+        <p>Tak perlu menunggu tua untuk berubah, sebab ajal tak pernah memandang usia. Pintu taubat selalu terbuka lebar selagi nafas masih ada.</p>
+      </div>
+
+      <div class="advice-card">
+        <div class="icon"><img src="foto/emot_sikap.png" alt="Sikap" class="img-emoji"></div>
+        <h3>Jagalah Sikap ke Sesama</h3>
+        <p>Khilaf kepada Allah bisa diampuni dengan taubat, tapi urusan antarmanusia harus diselesaikan dan dimaafkan mumpung masih di dunia.</p>
+      </div>
+    </div>
+
+    <div class="main-quote">
+      <p>“Berbekallah, dan sesungguhnya sebaik-baik bekal adalah takwa.”</p>
+      <span>— QS. Al-Baqarah: 197</span>
+    </div>
+  </div>
+</section>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="bottom-nav-btn active" title="Home">
+    <img src="foto/home-icon-silhouette.png" alt="Home">
+    <span>Home</span>
+  </a>
+  
+  <a href="pengaturan.html" class="bottom-nav-btn" title="Urutan Perjalanan Akhirat">
+    <img src="foto/map.png" alt="Urutan Perjalanan Akhirat">
+    <span>Urutan Perjalanan Akhirat</span>
+  </a>
+  
+  <a href="about.html" class="bottom-nav-btn" title="Tentang">
+    <img src="foto/information-button.png" alt="Tentang">
+    <span>Tentang</span>
+  </a>
+</nav>
+<script src="voice-assistant.js"></script>
+</body>
+</html>

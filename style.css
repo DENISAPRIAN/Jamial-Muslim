@@ -1,0 +1,801 @@
+* { 
+  box-sizing: border-box; 
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  color: #FFFFFF;
+  background-color: #059669;
+  padding: 10px;
+  padding-bottom: 80px;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* --- BACKGROUND UTAMA UNTUK HP (DEFAULT) --- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("foto/Unknown.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  opacity: 0.8; 
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --- KHUSUS PC DAN TABLET (Layar > 768px) --- */
+@media (min-width: 768px) {
+  body::before {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 280px; 
+    width: calc(100% - 280px);
+    background-image: url("foto/Unknown.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+  }
+}
+
+body > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* CONTAINER UTAMA */
+.main-content {
+  width: 100% !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  padding: 0 10px !important;
+  box-sizing: border-box !important;
+}
+
+/* HEADER BANNER */
+header {
+  text-align: center;
+  padding: 40px 20px;
+  width: 100% !important;
+  max-width: 800px !important;
+  margin: 0 auto 25px auto !important;
+  border-radius: 25px !important; 
+  box-sizing: border-box !important;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.bismillah {
+  color: #fff !important;
+  font-family: 'Amiri', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  text-align: center;
+  line-height: 1.6;
+  white-space: normal !important; 
+  width: 100%;
+  padding: 0 10px;
+}
+
+#jam-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#jam {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff !important;
+  text-shadow: 3px 3px 10px rgba(0,0,0,0.5) !important;
+  margin-bottom: 8px;
+  letter-spacing: 2px;
+}
+
+#tanggal {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-weight: 600;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5) !important;
+}
+
+.header-bawah-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.logo-tengah {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 15px auto;
+}
+
+.logo-tengah img {
+  width: 220px;
+  max-width: 80%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.jadwal-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  border-radius: 25px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.06), rgba(233, 242, 239, 0.94)),
+    url("foto/Loo.jpeg") center / cover no-repeat;
+  backdrop-filter: blur(15px);
+  padding: 20px 15px;
+  position: relative;
+  border: 2px solid #10B981;
+}
+
+.lokasi-kontrol {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.audio-status {
+  text-align: center;
+  margin: 10px 0;
+  font-weight: bold;
+  color: #10b981;
+}
+
+.lokasi-info {
+  text-align: center;
+  margin-bottom: 18px;
+  padding-bottom: 15px;
+}
+
+.lokasi {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #059669;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* MENU BUTTONS GRID */
+.menu-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 10px 0;
+}
+
+.menu-item {
+  width: 100%;
+}
+
+.menu-btn {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  box-sizing: border-box;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.menu-icon {
+  font-size: 32px;
+}
+
+.menu-icon img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.menu-btn:hover,
+.menu-item.active .menu-btn {
+  transform: translateY(-4px);
+  border-color: #f3f0f0;
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(249, 249, 249, 0.5)), rgba(253, 250, 250, 0)
+  url("foto/Loo.jpeg") center / cover no-repeat;
+  box-shadow: 0 12px 25px rgba(16, 185, 129, 1);
+}
+
+.menu-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1e293b;
+  text-align: center;
+}
+
+.lokasi-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: fit-content;
+  margin: 10px auto;
+  padding: 8px 14px;
+  border: 2px solid #10B981;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #10b981;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.lokasi-btn img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.lokasi-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(145deg, #f0fdf4, #ffffff);
+  border-color: #10b981;
+}
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 10px 15px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; 
+  box-sizing: border-box;
+}
+
+.bottom-nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.9);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  min-width: fit-content; 
+  padding: 4px 12px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.bottom-nav-btn img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  margin-bottom: 4px; 
+  flex-shrink: 0;
+}
+
+.bottom-nav-btn span {
+  text-align: center;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.bottom-nav-btn:hover,
+.bottom-nav-btn.active {
+  color: #000000;
+  transform: translateY(-3px);
+}
+
+.footer-credit {
+  text-align: center;
+  margin-top: 30px;
+  font-style: italic;
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.sholat-waktu:empty {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.waktu-sholat {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.sholat-item {
+  background: linear-gradient(145deg, #FFFFFF00, #F8FAFC00);
+  border-radius: 12px;
+  padding: 10px 4px;
+  text-align: center;
+  border: 1px solid rgba(16, 185, 129, 0.96);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.04);
+  transition: all 0.3s ease;
+}
+
+.sholat-item:hover {
+  transform: translateY(-3px);
+  border-color: #10b981;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.96);
+}
+
+.sholat-item img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 2px;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #10b981, #fdfcfc);
+    border-radius: 10px;
+}
+
+.sholat-nama {
+  display: block;
+  font-family: 'Amiri', serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 2px;
+  white-space: nowrap;
+}
+
+.sholat-waktu {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #059669;
+  display: block;
+}
+
+#nextAdzan {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #059669;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(16, 185, 129, 0.2);
+  padding: 12px 20px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.item select {
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 6px;
+  padding: 6px;
+  font-family: 'Cairo', sans-serif;
+}
+
+.item button {
+  background: white;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.tagline {
+  font-size: 15px;
+  color: #FFFFFF;
+  font-style: italic;
+  font-weight: 400;
+  display: block;
+  margin-top: 4px;
+  text-shadow: 1px 1px 1px #000000;
+}
+
+.floating-menu-btn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 44px;
+  height: 44px;
+  background: #fffffff2;
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.floating-menu-btn img {
+  content: url("foto/menu.png");
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 82%;
+  max-width: 320px;
+  height: 100%;
+  background:
+    linear-gradient(rgba(248, 249, 249, 0.5), rgba(251, 253, 252, 0.5)),
+    url("foto/Loo.jpeg") center / cover no-repeat;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 1);
+  z-index: 1002;
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sidebar-menu.active {
+  left: 0;
+}
+
+.sidebar-title {
+  font-family: 'Cairo', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1b4d3e;
+}
+
+.sidebar-content {
+  padding: 10px 20px 30px;
+}
+
+.menu-section-title {
+  font-family: 'Cairo', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1b4d3e;
+  margin: 22px 0 12px 0;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 14px;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: #444444;
+  font-family: 'Cairo', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+  color: #1b4d3e;
+  transform: translateX(4px);
+}
+
+.sidebar-nav img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/* MEDIA QUERIES (KHUSUS HP) */
+@media (max-width: 600px) {
+  header {
+    padding: 30px 15px;
+    border-radius: 20px;
+  }
+
+  .bismillah { 
+    font-size: 1.5rem !important; 
+    letter-spacing: 0px !important; 
+    line-height: 1.4 !important;
+  }
+  
+  #jam { font-size: 2.3rem !important; }
+  
+  .jadwal-container {
+    border-radius: 20px;
+    padding: 20px 15px;
+  }
+
+  .menu-buttons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  .menu-btn { border-radius: 15px; }
+  .menu-icon { font-size: 26px; }
+  .menu-label { font-size: 10px; }
+  
+  .bottom-nav {
+    justify-content: space-around; 
+    gap: 0;
+    padding: 9px 4px;
+  }
+
+  .bottom-nav-btn {
+    font-size: 10px;
+    min-width: 65px;
+    max-width: 105px;
+  }
+
+  .bottom-nav-btn img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* MEDIA QUERIES KHUSUS LAPTOP, MACBOOK, & TABLET (MIN-WIDTH: 768PX) */
+@media (min-width: 768px) {
+  .sidebar-menu {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 280px !important;
+    height: 100vh !important;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4) !important;
+    z-index: 1002 !important;
+    overflow-y: auto !important;
+  }
+
+  .floating-menu-btn,
+  .sidebar-overlay {
+    display: none !important;
+  }
+
+  body::before {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 280px !important;
+    width: calc(100% - 280px) !important;
+    background-image: url("foto/Unknown.jpeg") !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+
+  body {
+    padding-left: 280px !important;
+    box-sizing: border-box !important;
+  }
+
+  body > *:not(.sidebar-menu):not(.bottom-nav) {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    max-width: 800px !important;
+    box-sizing: border-box !important;
+  }
+
+  .main-content, 
+  header, 
+  .jadwal-container, 
+  .header-bawah-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 800px !important;
+    width: 100% !important;
+  }
+
+  .menu-buttons {
+    grid-template-columns: repeat(3, 1fr) !important;
+    max-width: 800px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .bottom-nav {
+    left: 280px !important;
+    right: 0 !important;
+    width: calc(100% - 280px) !important;
+    justify-content: center !important;
+    gap: 35px !important;
+    padding: 12px 20px !important;
+  }
+
+  .bottom-nav-btn {
+    font-size: 13px !important;
+  }
+  
+  .bottom-nav-btn img {
+    width: 26px !important;
+    height: 26px !important;
+  }
+}
+
+body.listening::before,
+body.voice-active::before,
+body:has(.voice-modal.active)::before,
+body:has(#voiceModal.active)::before {
+  left: 0 !important;
+  width: 100% !important;
+}
+
+body.listening,
+body.voice-active,
+body:has(.voice-modal.active),
+body:has(#voiceModal.active) {
+  padding-left: 10px !important;
+}
+
+body.listening ~ .bottom-nav,
+body.voice-active ~ .bottom-nav {
+  left: 0 !important;
+  width: 100% !important;
+}
+
+/* =========================================
+   PERBAIKAN UTUH LOGO 3D (TIDAK TERPOTONG & RAPI)
+========================================= */
+.scene {
+    width: 100%;
+    max-width: 240px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+    touch-action: none;
+    user-select: none;
+    cursor: grab;
+    margin: 10px auto 5px auto;
+    position: relative;
+    overflow: visible !important;
+}
+.scene:active { cursor: grabbing; }
+
+.glow {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: #059669;
+    filter: blur(50px);
+    opacity: .22;
+    animation: pulse 4s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+.floor-shadow {
+    position: absolute;
+    width: 140px;
+    height: 25px;
+    margin-top: 80px;
+    border-radius: 50%;
+    background: #059669;
+    filter: blur(18px);
+    opacity: .24;
+    animation: shadow 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.logo-3d {
+    position: relative;
+    width: 160px;
+    height: 80px;
+    transform-style: preserve-3d;
+    transform: rotateX(-8deg) rotateY(-18deg);
+    will-change: transform;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-3d img.logo-layer {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    object-fit: contain !important;
+    display: block;
+    pointer-events: none;
+    background: transparent;
+}
+
+.logo-depth-1 { transform: translateZ(-14px); filter: brightness(.45) drop-shadow(0 4px 3px rgba(0,0,0,.4)); }
+.logo-depth-2 { transform: translateZ(-11px); filter: brightness(.50); }
+.logo-depth-3 { transform: translateZ(-8px); filter: brightness(.56); }
+.logo-depth-4 { transform: translateZ(-5px); filter: brightness(.62); }
+.logo-depth-5 { transform: translateZ(-2px); filter: brightness(.70); }
+.logo-depth-6 { transform: translateZ(-1px); filter: brightness(.82); }
+.logo-front   { transform: translateZ(0); filter: drop-shadow(0 6px 8px rgba(0,0,0,.45)); }
+
+@keyframes pulse {
+    from { opacity: .14; transform: scale(.82); }
+    to { opacity: .32; transform: scale(1.16); }
+}
+
+@keyframes shadow {
+    0%, 100% { transform: scale(1); opacity: .24; }
+    50% { transform: scale(.72); opacity: .12; }
+}

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+```html
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta google-site-verification: google3e481c43c104b06f.html>
+  <title>Jamial Muslim</title>
+
+  <meta name="description" content="Jamial Muslim adalah website Islami dengan berbagai fitur untuk membantu umat Muslim dalam aktivitas ibadah sehari-hari.">
+
+  <!-- Logo website -->
+  <link rel="icon" type="image/png" href="foto/logo.png">
+  <link rel="apple-touch-icon" href="foto/logo.png">
+
+  <!-- CSS website -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Informasi website untuk Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Jamial Muslim",
+    "url": "https://kitamuslim-931af.web.app/"
+  }
+  </script>
+</head>
+```
+<body>
+
+ <main class="main-content">
+  <!-- HEADER YANG MENGIKUTI UKURAN TENGAH -->
+  <header>
+    <h1 class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</h1>
+    <div id="jam-container">
+      <div id="jam">--:--:--</div>
+      <div id="tanggal">Memuat...</div>
+    </div>
+  </header>
+  
+  <!-- Konten jadwal dan menu lainnya di sini -->
+</main>
+
+    <div class="header-bawah-container">
+      <button id="floatingMenuBtn" class="floating-menu-btn"
+        onclick="toggleSidebar()"
+        aria-label="Buka Menu">
+        <img src="foto/menu.png" alt="Menu">
+      </button>
+
+      <!-- AREA LOGO 3D INTERAKTIF -->
+      <div class="scene" id="scene" aria-label="Logo Jamial Muslim 3D interaktif">
+          <div class="glow"></div>
+          <div class="floor-shadow"></div>
+          
+          <div class="logo-3d" id="logo3d">
+              <!-- KETEBALAN LOGO -->
+              <img src="foto/Log.png" class="logo-layer logo-depth-1" alt="">
+              <img src="foto/Log.png" class="logo-layer logo-depth-2" alt="">
+              <img src="foto/Log.png" class="logo-layer logo-depth-3" alt="">
+              <img src="foto/Log.png" class="logo-layer logo-depth-4" alt="">
+              <img src="foto/Log.png" class="logo-layer logo-depth-5" alt="">
+              <img src="foto/Log.png" class="logo-layer logo-depth-6" alt="">
+              
+              <!-- LOGO DEPAN -->
+              <img src="foto/Log.png" class="logo-layer logo-front" alt="Jamial Muslim">
+          </div>
+      </div>
+    </div>
+
+    <center>
+      <a class="tagline">Ibadah jadi lebih mudah</a>
+      <div>
+        <a class="tagline">Dekat di setiap waktu Dekat dalam ibadah</a>
+      </div>
+      <!-- Elemen status interaksi opsional -->
+      <div class="status" id="status"></div>
+    </center>
+
+    <div class="jadwal-container">
+      <div class="lokasi-kontrol">
+        <button id="foto/lokasiBtn" class="lokasi-btn" onclick="ambilLokasi()">
+          <img src="foto/map 2.png" alt="Lokasi">
+          <span>Deteksi Lokasi Saya</span>
+        </button>
+      </div>
+      
+      <div class="audio-status" id="audio-status">
+        Lokasi Anda Berada Di
+      </div>
+      
+      <div class="lokasi-info">
+        <div class="lokasi">
+          <span id="kota">Memuat...</span>,
+          <span id="zona">WIB</span>
+        </div>
+        
+        <div class="jadwal-sholat">
+          <div class="waktu-sholat">
+            <div class="sholat-item">
+              <img src="foto/sunrise.png" alt="Subuh">
+              <span class="sholat-nama">Subuh</span>
+              <span class="sholat-waktu" id="subuh">--:--</span>
+            </div>
+            
+            <div class="sholat-item">
+              <img src="foto/morning.png" alt="Dzuhur">
+              <span class="sholat-nama">Dzuhur</span>
+              <span class="sholat-waktu" id="dzuhur">--:--</span>
+            </div>
+            
+            <div class="sholat-item">
+              <img src="foto/sunset.png" alt="Ashar">
+              <span class="sholat-nama">Ashar</span>
+              <span class="sholat-waktu" id="ashar">--:--</span>
+            </div>
+            
+            <div class="sholat-item">
+              <img src="foto/day-and-night.png" alt="Maghrib">
+              <span class="sholat-nama">Maghrib</span>
+              <span class="sholat-waktu" id="maghrib">--:--</span>
+            </div>
+            
+            <div class="sholat-item">
+              <img src="foto/night.png" alt="Isya">
+              <span class="sholat-nama">Isya</span>
+              <span class="sholat-waktu" id="isya">--:--</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="nextAdzan">Memuat jadwal...</div>
+      </div>
+    </div>
+
+    <div class="menu-buttons">
+      <!-- Wudhu -->
+      <div class="menu-item active">
+        <button class="menu-btn" onclick="window.location.href='menu/wudhu.html'" title="Wudhu">
+          <span class="menu-icon">
+            <img src="foto/bills.png" alt="Wudhu">
+          </span>
+          <span class="menu-label">Wudhu</span>
+        </button>
+      </div>
+      
+      <!-- Sholat -->
+      <div class="menu-item active">
+        <button class="menu-btn" onclick="window.location.href='menu/doa-sholat.html'" title="Sholat">
+          <span class="menu-icon">
+            <img src="foto/islam.png" alt="Sholat">
+          </span>
+          <span class="menu-label">Sholat</span>
+        </button>
+      </div>
+      
+      <!-- Dzikir -->
+      <div class="menu-item active">
+        <button class="menu-btn" onclick="window.location.href='menu/dzikir.html'" title="Dzikir">
+          <span class="menu-icon">
+            <img src="foto/beads.png" alt="Dzikir">
+          </span>
+          <span class="menu-label">Dzikir</span>
+        </button>
+      </div>
+      
+      <!-- Tasbih -->
+      <div class="menu-item active">
+        <button class="menu-btn" onclick="window.location.href='menu/tasbih.html'" title="Tasbih">
+          <span class="menu-icon">
+            <img src="foto/tasbih.png" alt="Tasbih">
+          </span>
+          <span class="menu-label">Tasbih</span>
+        </button>
+      </div>
+      
+      <!-- Arah Kiblat -->
+      <div class="menu-item active">
+        <button class="menu-btn" onclick="window.location.href='menu/kompas.html'" title="Arah Kiblat">
+          <span class="menu-icon">
+            <img src="foto/compass.png" alt="Arah Kiblat">
+          </span>
+          <span class="menu-label">Arah Kiblat</span>
+        </button>
+      </div>
+      
+      <!-- Al Quran -->
+      <div class="menu-item active">
+        <button class="menu-btn" onclick="window.location.href='menu/alquran.html'" title="Al Quran">
+          <span class="menu-icon">
+            <img src="foto/alquran.png" alt="Al Quran">
+          </span>
+          <span class="menu-label">Al Quran</span>
+        </button>
+      </div>
+      
+      <!-- Asmaulhusna -->
+      <div class="menu-item active">
+        <button class="menu-btn" onclick="window.location.href='menu/asmaallah.html'" title="Asmaulhusna">
+          <span class="menu-icon">
+            <img src="foto/faith-in-allah.png" alt="Asmaulhusna">
+          </span>
+          <span class="menu-label">Asmaulhusna</span>
+        </button>
+      </div>
+      
+      <!-- Kalender Hijriah -->
+      <div class="menu-item active">
+        <button class="menu-btn" onclick="window.location.href='menu/hijriah.html'" title="Kalender Hijriah">
+          <span class="menu-icon">
+            <img src="foto/calendar.png" alt="Kalender Hijriah">
+          </span>
+          <span class="menu-label">Kalender Hijriah</span>
+        </button>
+      </div>
+      
+      <!-- Tahlil -->
+      <div class="menu-item active">
+        <button class="menu-btn" onclick="window.location.href='menu/tahlil.html'" title="Tahlil">
+          <span class="menu-icon">
+            <img src="foto/cemetery.png" alt="Tahlil">
+          </span>
+          <span class="menu-label">Tahlil</span>
+        </button>
+      </div>
+      
+      <!-- Nama-Nama Nabi -->
+      <div class="menu-item active">
+        <button class="menu-btn" onclick="window.location.href='menu/nama-namanabi.html'" title="Nama-Nama Nabi">
+          <span class="menu-icon">
+            <img src="foto/people.png" alt="Nama-Nama Nabi">
+          </span>
+          <span class="menu-label">Nama-Nama Nabi</span>
+        </button>
+      </div>
+      
+      <!-- Nama-Nama Malaikat -->
+      <div class="menu-item active">
+        <button class="menu-btn" onclick="window.location.href='menu/malaikat.html'" title="Nama-Nama Malaikat">
+          <span class="menu-icon">
+            <img src="foto/angel.png" alt="Nama-Nama Malaikat">
+          </span>
+          <span class="menu-label">Nama-Nama Malaikat</span>
+        </button>
+      </div>
+
+      <!-- Zakat -->
+      <div class="menu-item active">
+        <button class="menu-btn" onclick="window.location.href='menu/zakat.html'" title="Zakat">
+          <span class="menu-icon">
+            <img src="foto/transference.png" alt="Zakat">
+          </span>
+          <span class="menu-label">Zakat</span>
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="bottom-nav-btn active" title="Home">
+      <img src="foto/home-icon-silhouette.png" alt="Home">
+      <span>Home</span>
+    </a>
+    
+    <a href="pengaturan.html" class="bottom-nav-btn" title="Urutan Perjalanan Akhirat">
+      <img src="foto/map.png" alt="Urutan Perjalanan Akhirat">
+      <span>Urutan Perjalanan Akhirat</span>
+    </a>
+    
+    <a href="about.html" class="bottom-nav-btn" title="Tentang">
+      <img src="foto/information-button.png" alt="Tentang">
+      <span>Tentang</span>
+    </a>
+  </nav>
+
+  <!-- Overlay Latar Belakang Gelap (saat menu terbuka) -->
+  <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+  <!-- Drawer / Sidebar Menu Pop-up -->
+  <div id="sidebarMenu" class="sidebar-menu">
+    <div class="sidebar-header">
+      <div class="sidebar-brand"></div>
+    </div>
+    
+    <div class="sidebar-content">
+      <div class="menu-section-title">Dashboard</div>
+      <ul class="sidebar-nav">
+        <li><a href="index.html"><img src="foto/home-icon-silhouette.png" alt="Beranda"> <span>Beranda</span></a></li>
+        <li><a href="menu/wudhu.html"><img src="foto/bills.png" alt="Wudhu"> <span>Panduan Wudhu</span></a></li>
+        <li><a href="menu/doa-sholat.html"><img src="foto/islam.png" alt="Doa Sholat"> <span>Doa & Praktek Sholat</span></a></li>
+        <li><a href="menu/dzikir.html"><img src="foto/beads.png" alt="Dzikir"> <span>Dzikir</span></a></li>
+        <li><a href="menu/tasbih.html"><img src="foto/tasbih.png" alt="Tasbih"> <span>Tasbih Digital</span></a></li>
+        <li><a href="menu/kompas.html"><img src="foto/compass.png" alt="Arah Kiblat"> <span>Arah Kiblat</span></a></li>
+        <li><a href="menu/alquran.html"><img src="foto/alquran.png" alt="Al-Quran"> <span>Al-Quran</span></a></li>
+        <li><a href="menu/asmaallah.html"><img src="foto/faith-in-allah.png" alt="Asmaulhusna"> <span>Asmaulhusna</span></a></li>
+        <li><a href="menu/hijriah.html"><img src="foto/calendar.png" alt="Kalender"> <span>Kalender Hijriah</span></a></li>
+        <li><a href="menu/tahlil.html"><img src="foto/cemetery.png" alt="Tahlil"> <span>Tahlil</span></a></li>
+        <li><a href="menu/nama-namanabi.html"><img src="foto/people.png" alt="Nabi"> <span>Nama-Nama Nabi</span></a></li>
+        <li><a href="menu/malaikat.html"><img src="foto/angel.png" alt="Malaikat"> <span>Nama-Nama Malaikat</span></a></li>
+        <li><a href="menu/zakat.html"><img src="foto/transference.png" alt="Zakat"> <span>Kalkulator Zakat</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="preload.js"></script>
+  <script src="voice-assistant.js?v=999"></script>
+  
+</body>
+</html>
